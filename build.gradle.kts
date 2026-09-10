@@ -3,6 +3,8 @@ plugins {
     kotlin("jvm") version "2.0.21"
     // IDEA — generates .idea/.iml via `gradle idea`, helps JetBrains import
     idea
+    // Publish — for `depend: [PurrCore]` via mavenLocal / GitHub Packages
+    `maven-publish`
     // Formatter — Spotless + ktlint for Kotlin (nix fmt via flake.nix)
     id("com.diffplug.spotless") version "7.0.2"
     // Shadow removed — manual fatJar used to avoid ASM 65 issue (shadow 8.1.1 can't read Java 21).
@@ -91,6 +93,30 @@ idea {
         isDownloadSources = true
         // exclude build dirs
         excludeDirs.addAll(files(".gradle", "build", "out", ".idea/workspace.xml", ".idea/tasks.xml"))
+    }
+}
+
+// Publish — local + GitHub Packages (for `compileOnly("com.purrcore:purrcore:1.0.0")`)
+// Publish shadowJar (fat) as maven artifact for composite fallback
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            artifact(tasks.named<Jar>("shadowJar"))
+            groupId = "com.purrcore"
+            artifactId = "purrcore"
+            version = "1.0.0"
+        }
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/flakesonnix/PurrCore")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR") ?: "flakesonnix"
+                password = System.getenv("GITHUB_TOKEN") ?: ""
+            }
+        }
     }
 }
 

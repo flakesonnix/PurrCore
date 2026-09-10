@@ -57,11 +57,23 @@ jobs:
         run: nix build --accept-flake-config --option sandbox relaxed --impure --no-link --print-out-paths
         continue-on-error: true # Gradle Central fetch may be flaky; devShell build is primary
 
-      - name: Upload jar
+      - name: Publish to Maven Local (for dependent plugins)
+        run: nix develop --accept-flake-config --command gradle publishToMavenLocal --no-daemon
+
+      - name: Upload jar (PurrCore lib)
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: template-plugin
+          name: PurrCore-${{ github.sha }}
+          path: build/libs/purrcore-*.jar
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload jar (all)
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: purrcore-all
           path: build/libs/*.jar
           if-no-files-found: warn
 
