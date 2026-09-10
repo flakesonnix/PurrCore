@@ -1,0 +1,8 @@
+name: PurrCore
+version: '1.0.0'
+main: com.purrcore.PurrCorePlugin
+api-version: '1.21'
+prefix: PurrCore
+author: you
+description: Shared core for all plugins — HikariCP DB (sqlite/mysql/postgresql), I18n, utils. Paper & Spigot.
+website: https://github.com/flakesonnix/PurrCore

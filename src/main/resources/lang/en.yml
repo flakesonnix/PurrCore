@@ -1,0 +1,9 @@
+# PurrCore — English (en) — shared core
+prefix: "&b[PurrCore] &r"
+core-enabled: "&aPurrCore enabled (DB={status})."
+core-disabled: "&cPurrCore disabled."
+db-connected: "&7DB connected [{type}] pool={size}"
+db-migrate-done: "&7DB migrate done"
+only-players: "&cOnly players."
+language-set: "&aLanguage set to &e{lang}&a."
+language-list: "&7Available: &e{langs}"

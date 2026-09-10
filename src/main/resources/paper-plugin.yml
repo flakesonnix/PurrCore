@@ -1,0 +1,7 @@
+name: PurrCore
+version: '1.0.0'
+main: com.purrcore.PurrCorePlugin
+api-version: '1.21'
+description: Shared core for all plugins — HikariCP DB, I18n, utils. Paper & Spigot.
+prefix: PurrCore
+author: you

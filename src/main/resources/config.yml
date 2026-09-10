@@ -1,0 +1,27 @@
+# PurrCore — shared config (used by all plugins via PurrCore)
+language: en # en, de — lang/*.yml
+
+database:
+  type: sqlite
+  pool:
+    maximum-pool-size: 10
+    minimum-idle: 2
+    connection-timeout: 30000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+  sqlite:
+    file: database.db # → plugins/PurrCore/database.db (shared)
+  mysql:
+    host: localhost
+    port: 3306
+    database: minecraft
+    user: root
+    password: "change_me"
+    params: "useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8mb4&serverTimezone=UTC"
+  postgresql:
+    host: localhost
+    port: 5432
+    database: minecraft
+    user: postgres
+    password: "change_me"
+    params: "sslmode=disable"
