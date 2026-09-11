@@ -3,10 +3,8 @@ package com.purrcore.i18n
 import io.mockk.every
 import io.mockk.mockk
 import java.io.File
-import java.nio.file.Files
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir

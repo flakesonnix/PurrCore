@@ -3,7 +3,6 @@ package com.purrcore.db
 import io.mockk.every
 import io.mockk.mockk
 import java.io.File
-import java.nio.file.Files
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import org.junit.jupiter.api.Assertions.assertFalse
